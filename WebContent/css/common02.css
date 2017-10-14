@@ -1,0 +1,115 @@
+/*ͨ����ʽ*/
+* {
+    font-family:微软雅黑, Arial;
+   
+    font-size:14px;
+}
+/*body����ʽ*/
+body{
+    background-color:lightgray;
+}
+/*���ӵ���ʽ*/
+a{
+    color:gray;
+    text-decoration:none;
+}
+/*α��*/
+a:hover{
+    color:red;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+a:visited{
+    text-decoration:none;
+}
+
+img{
+    height:100%;
+    vertical-align:middle;
+}
+
+fieldset{
+    padding:10px;
+}
+
+legend{
+    font-size:16px;
+    font-weight:bold;
+}
+
+input[type="text"]{
+    width:150px;
+}
+
+input[type="password"]{
+    width:150px;
+}
+
+textarea{
+    width:80%;
+    text-align:left;
+}
+
+h1, h2, h3 {
+    text-align:center;
+}
+
+
+
+.page-header{
+    position:relative;
+    height:120px;
+    background-color:#b0b0b0;
+    border-radius:10px;   
+    margin-bottom:10px;
+    padding:10px;
+}
+
+
+
+
+.sidebar-menugroup{
+    padding-bottom:10px;
+}
+
+
+
+.page-content{
+    width:830px;
+    float:right;
+}
+.page-body{
+    padding:5px;
+}
+
+.page-sidebar{
+	 
+	text-align:left;
+    width:150px;
+   
+}
+
+.page-content{
+    width:830px;
+    
+}
+
+
+.sidebar-grouptitle{
+    width:100%;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+	
+}
+
+.sidebar-menu{
+	letter-spacing:3px;
+    list-style:none;
+    padding-left:20px;
+}
+
+
+
+
