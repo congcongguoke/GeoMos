@@ -5,8 +5,8 @@
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="refresh" content="0;url=<%=request.getContextPath() %>/servlet/resultsindex?action=pointname">
-<title>艾西湖</title>
+<!-- <meta http-equiv="refresh" content="0;url=<%=request.getContextPath() %>/servlet/resultsindex?action=pointname">
+<title>艾西湖</title> -->
 </head>
 
--</html>
+main</html>
