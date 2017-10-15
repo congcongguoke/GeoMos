@@ -1,18 +1,37 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
+
 <html>
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>艾西湖</title>
+  
+   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
 </head>
-<frameset rows="150,*,93" cols="*" framespacing="0" frameborder="no" border="0">
- <frame src="<%=request.getContextPath()%>/jsp/top.jsp" name="topFrame" scrolling="No" noresize="noresize" id="topFrame"  marginwidth="0" marginheight="0"  frameborder="0" />
- <frameset cols="260,*" id="frame">
-	<frame src="<%=request.getContextPath()%>/jsp/left.jsp" name="leftFrame" noresize="noresize" marginwidth="110px" marginheight="0" frameborder="0" scrolling="auto" target="main"  />
-	<frame src="<%=request.getContextPath()%>/jsp/01.jsp" name="main" marginwidth="50px" marginheight="40px" frameborder="0" scrolling="auto" target="_self"  />
-    </frameset>
- <frame src="<%=request.getContextPath()%>/jsp/02.jsp" name="bottomFrame" scrolling="No" noresize="noresize" id="bottomFrame" marginwidth="0" marginheight="0"/>
-</frameset><noframes></noframes>
+
+ <body class="easyui-layout" >
+
+		<div data-options="region:'north',border:false" style="height:100px;padding:10px">
+			<jsp:include page="top.jsp"></jsp:include>
+		  </div>
+		  
+		<div data-options="region:'south',border:false" style="height:45px;padding:10px"> 
+		   <jsp:include page="02.jsp"></jsp:include>
+		  		 </div>
+		 
+		 <div data-options="region:'west',split:true" title="所有检测站的数据结果"  style="width:220px;padding:10px">
+		    <jsp:include page="left.jsp"></jsp:include>
+		</div> 
+		
+		<div data-options="region:'center',title:'检测数据'">
+			<jsp:include page="01.jsp"></jsp:include>
+		</div>
+</body> 
 </html>
