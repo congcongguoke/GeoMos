@@ -14,9 +14,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <title>艾西湖</title>
  
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common02.css"/>
+<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/demo.css">
+	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	
 </head>
 <body>
-            <div class="page-sidebar">
+
+
+     <div style="margin:20px 0;"></div>
+	<div class="easyui-panel"  title="所有监测站的数据结果"  style="padding:5px">
+		<ul class="easyui-tree">
+			<li>
+				<ul>
+					<li>
+						<span>监测站点</span>
+						<ul class="sidebar-menu">
+							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Pointservlet" target="main">监测站点搜索</a></li>
+							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Resultsservlet" target="main" >监测数据搜索</a></li>
+							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Coordinatesservlet" target="main" >监测站点初始坐标</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>温度气压管理</span>
+						<ul class="sidebar-menu">
+							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" target="main">温度气压搜索</a></li>  
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+        <%--  <!--  <div class="page-sidebar" >
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">所有监测站的数据结果</div>
                     <ul class="sidebar-menu">
@@ -42,6 +74,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" target="main">温度气压搜索</a></li>        
                     </ul>
                 </div>
-                </div>
+                </div> --> --%>
 </body>
 </html>
