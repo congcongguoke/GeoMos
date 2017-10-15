@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     background-color:#b7d2ff;
     }
     </style>
-<title>艾西湖</title>
+<title>艾溪湖</title>
 </head>
 <body >
 	<h2>所有监测点</h2>
