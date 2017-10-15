@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>艾西湖</title>
  
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common02.css"/>
+<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common02.css"/> --%>
 <link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/demo.css">
@@ -22,31 +22,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	
 </head>
 <body>
+<ul class="easyui-tree">
+		<li>
+			<span>所有监测站的数据结果</span>
+			<ul>
+				<li data-options="state:'closed'">
+					<span>监测站点</span>
+					<ul>
+						<li>
+							<span><a href="<%=request.getContextPath()%>/servlet/Pointservlet" target="main">监测站点搜索</a></span>
+						</li>
+						<li>
+							<span>Wife</span>
+						</li>
+						<li>
+							<span>Company</span>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span>Program Files</span>
+					<ul>
+						<li>Intel</li>
+						<li>Java</li>
+						<li>Microsoft Office</li>
+						<li>Games</li>
+					</ul>
+				</li>
+				<li>index.html</li>
+				<li>about.html</li>
+				<li>welcome.html</li>
+			</ul>
+		</li>
+	</ul>
 
 
-     <div style="margin:20px 0;"></div>
-	<div class="easyui-panel"  title="所有监测站的数据结果"  style="padding:5px">
-		<ul class="easyui-tree">
-			<li>
-				<ul>
-					<li>
-						<span>监测站点</span>
-						<ul class="sidebar-menu">
-							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Pointservlet" target="main">监测站点搜索</a></li>
-							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Resultsservlet" target="main" >监测数据搜索</a></li>
-							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/Coordinatesservlet" target="main" >监测站点初始坐标</a></li>
-						</ul>
-					</li>
-					<li>
-						<span>温度气压管理</span>
-						<ul class="sidebar-menu">
-							 <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" target="main">温度气压搜索</a></li>  
-						</ul>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</div>
+
 	
         <%--  <!--  <div class="page-sidebar" >
                 <div class="sidebar-menugroup">
