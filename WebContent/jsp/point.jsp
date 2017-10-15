@@ -16,22 +16,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
     <style type="text/css">
-    #footer{
-    position:fixed; 
-	bottom:0;
-	width:100%;
-    }
-    #footer p{
-    text-align:center;
-    }
-    h2{
-    text-align:center;
-    }
-    body{
-    background-color:#b7d2ff;
-    }
-    </style>
-<title>艾溪湖</title>
+    	#footer{
+    		position:fixed; 
+			bottom:0;
+			width:100%;}
+    	#footer p{
+    		text-align:center;}
+   		h2{
+    		text-align:center;}
+    	body{
+    		background-color:#b7d2ff;}
+     </style>
+	 <title>艾溪湖</title>
 </head>
 <body >
 	<h2>所有监测点</h2>
@@ -46,18 +42,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<th data-options="field:'listprice',width:80,align:'right'">时间</th>
 				</tr>
 						
-			<c:forEach items="${pspage}" var="point" varStatus="status">
+				<c:forEach items="${pspage}" var="point" varStatus="status">
 				<tr>
 					<td><input type="checkbox"  name="id" value="${point.id}"/></td>
 					<td>${point.name}</td>
 					<td>${point.epoch}</td>
 				</tr>
-	   	   </c:forEach>
+	   	   		</c:forEach>
 		   </thead>				
 	  </table>
    </form>
    <div id = "footer">
-   	<p>ViniBuild Copyright©2017</p>
+   		<p>ViniBuild Copyright©2017</p>
    </div>
- </body>
+</body>
 </html>
