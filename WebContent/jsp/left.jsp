@@ -23,6 +23,19 @@
 	 <div style="margin: 20px 0;"></div>
 	 <div style="padding:5px">
 	   <ul class="easyui-tree">
+	   <li class="tree-title">
+	       <div class="sidebar-grouptitle">所有监测站的数据结果</div>
+			<ul class="sidebar-menu">
+			<c:forEach items="${ps}" var="ps" varStatus="status">
+				<li class="sidebar-menuitem active">
+				<a href="<%=request.getContextPath()%>/servlet/resultsindex?pointid=${ps.id }&action=sel" target="main">${ps.name }
+				
+				</a></li>
+				  </c:forEach>
+			</ul>
+	    
+	   </li>
+	   
 		<li class="tree-title"><span >监测站点</span>
 		
 			<ul class="sidebar-menu">

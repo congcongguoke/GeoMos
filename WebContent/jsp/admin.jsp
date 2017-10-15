@@ -26,7 +26,7 @@
 		   <jsp:include page="02.jsp"></jsp:include>
 		  		 </div>
 		 
-		 <div data-options="region:'west',split:true" title="所有检测站的数据结果"  style="width:220px;padding:10px">
+		 <div data-options="region:'west',split:true" title="目录"  style="width:240px;padding:10px">
 		    <jsp:include page="left.jsp"></jsp:include>
 		</div> 
 		
