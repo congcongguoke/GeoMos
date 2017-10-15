@@ -16,11 +16,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	src="<%=request.getContextPath()%>/js/My97DatePicker/WdatePicker.js"></script>
 <title>艾西湖</title>
 
-	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/icon.css">
-	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/demo.css">
-	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.min.js"></script>
-	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
  
 </head>
 <body style="background-color:#b7d2ff;">
@@ -248,7 +248,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</c:if>
 							当前第<span>${page.currentPage}/${page.totalPage}</span>页
 							<c:if test="${page.currentPage != page.totalPage}">
-								<a href="javascript:changeCurrentPage('${page.currentPage+1}')" class='next'>下一页</a>
+								<a href="javascript:changeCurr	entPage('${page.currentPage+1}')" class='next'>下一页</a>
 								<a href="javascript:changeCurrentPage('${page.totalPage}')" class='last'>末页</a>
 							</c:if>
 							跳至&nbsp;<input id="currentPageText" type='text' value='${page.currentPage}' class='allInput w28' />&nbsp;页&nbsp;
