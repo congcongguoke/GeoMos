@@ -24,6 +24,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     #footer p{
     text-align:center;
     }
+    h2{
+    text-align:center;
+    }
     </style>
 <title>艾西湖</title>
 </head>

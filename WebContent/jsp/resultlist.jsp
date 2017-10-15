@@ -23,8 +23,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
  
 </head>
+<<<<<<< HEAD
 <body style="background-color:#b7d2ff;text-align:center">
+=======
+<body style="background-color:#b7d2ff;text-align:center;">
+>>>>>>> 9b102e6be477a668a2cddbe342ab7dafc4be7ac3
 	<h2>所有位移结果</h2>
+	<form action="<%=request.getContextPath()%>/servlet/Resultsservlet" id="mainForm" method="post">
 	<div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
 			<tbody>
@@ -68,6 +73,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 		</thead>
 	</table>
+	</form>
+	<div style="bottom:0px;text-align:center;">ViniBuild Copyright©2017</div>
 	<script>
 		(function($){
 			function pagerFilter(data){
@@ -172,19 +179,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 		 function getData(){
 			var rows = [];
-			/* for(var i=1; i<=800; i++){
-				var amount = Math.floor(Math.random()*1000);
-				var price = Math.floor(Math.random()*1000);
-				rows.push({
-					inv: 'Inv No '+i,
-					date: $.fn.datebox.defaults.formatter(new Date()),
-					name: 'Name '+i,
-					amount: amount,
-					price: price,
-					cost: amount*price,
-					note: 'Note '+i
-				});
-			} */
 			return rows;
 		} 
 		
