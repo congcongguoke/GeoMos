@@ -27,6 +27,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     h2{
     text-align:center;
     }
+    body{
+    background-color:#b7d2ff;
+    }
     </style>
 <title>艾西湖</title>
 </head>
