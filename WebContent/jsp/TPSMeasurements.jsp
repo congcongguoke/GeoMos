@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="background-color:#b7d2ff;text-align:center;">
 <h2>温度气压表</h2>
+<form action="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" id="mainForm" method="post">
 <div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
 			<tbody>
@@ -68,6 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tr>
 		</thead>
 	</table>
+</form>
 <div style="bottom:0px;align:center;">ViniBuild Copyright©2017</div>
 <script>
 		(function($){

@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="background-color:#b7d2ff;text-align:center;">
 	<h2>所有位移结果</h2>
+	<form action="<%=request.getContextPath()%>/servlet/Resultsservlet" id="mainForm" method="post">
 	<div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
 			<tbody>
@@ -68,6 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 		</thead>
 	</table>
+	</form>
 	<div style="bottom:0px;text-align:center;">ViniBuild Copyright©2017</div>
 	<script>
 		(function($){
