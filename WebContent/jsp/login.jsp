@@ -21,7 +21,7 @@
             </form>
         </div>        
        <div id = "footer">
-       <p>Copyright © ViliBuild </p>
+       <p>ViniBuild Copyright©2017</p>
        </div>
 </body>
 </html>

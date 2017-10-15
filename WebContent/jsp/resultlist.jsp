@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" />
+	<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" /> --%>
 		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
 		<script src="<%= basePath %>js/list.js"></script>
 		<script language="javascript" type="text/javascript"
@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
  
 </head>
-<body style="background-color:#b7d2ff;">
+<body style="background-color:#b7d2ff;text-align:center">
 	<h2>所有位移结果</h2>
 	<div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
