@@ -18,7 +18,7 @@
 
  <body class="easyui-layout" >
 
-		<div data-options="region:'north',border:false" style="height:100px;padding:10px">
+		<div data-options="region:'north',border:false" style="padding:10px">
 			<jsp:include page="top.jsp"></jsp:include>
 		  </div>
 		  

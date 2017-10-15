@@ -8,32 +8,55 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
-				<link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" />
+				<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" /> --%>
 		<script src="<%= basePath %>js/list.js"></script>
 <title>艾西湖</title>
+
+ <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
+	<style type="text/css">
+		#footer{
+  	  		position:fixed; 
+			bottom:0;
+			width:100%;
+    		}
+   	 #footer p{
+   			text-align:center;
+    		}
+	</style>
 </head>
-<body >
+<body style="background-color:#b7d2ff;text-align:center;">
+<h2 align="center"> 监测点的初始坐标</h2>
+
 <div class="page-content">
-<div class="content-nav">监测点 的初始坐标</div>
 		<form action="<%=request.getContextPath()%>/servlet/Coordinatesservlet" id="mainForm" method="post">
 			<input type="hidden" name="currentPage" id="currentPage" value="${page.currentPage}"/>
-			
-			<div class="right">
-				
-				<div class="rightCont">
-					<div class="zixun fix">
-						<table class="tab2" width="100%">
-							<tbody>
+			   <table id="dg" title="详细数据" style="width:100%;height:350px"
+			data-options="
+			rownumbers:true,
+			singleSelect:true,
+			pagination:true,
+			autoRowHeight:false,
+			pagination:true,
+			pageSize:10
+			">
+							<thead>
 								<tr>
-								    <th><input type="checkbox" id="all" onclick="#"/></th>
-								    <th>点名</th>
-								    <th>初始坐标更新时间</th>
-								    <th>东坐标</th>
-								    <th>北坐标</th>
-								    <th>高程   </th>
+								    <th data-options="field:'ck',checkbox:true"></th>
+									<th data-options="field:'itemid',width:130,align:'center'">点名</th>
+									<th data-options="field:'productid',width:170,align:'center'">初始坐标更新时间</th>
+									<th data-options="field:'listprice',width:130,align:'center'">东坐标</th>
+									<th data-options="field:'unitcost',width:130,align:'center'">北坐标</th>
+									<th data-options="field:'attr1',width:130,align:'center'">高程</th>
+					
 								</tr>
 								<c:forEach items="${cspage}" var="coordinates" varStatus="status">
 									<tr>
@@ -45,9 +68,137 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<td>${coordinates.height}</td>
 									</tr>
 								</c:forEach>
-							</tbody>
+							</thead>
 						</table>
-						<div class='page fix'>
+						
+							<script>
+		(function($){
+			function pagerFilter(data){
+				if ($.isArray(data)){	// is array
+					data = {
+						total: data.length,
+						rows: data
+					}
+				}
+				var target = this;
+				var dg = $(target);
+				var state = dg.data('datagrid');
+				var opts = dg.datagrid('options');
+				if (!state.allRows){
+					state.allRows = (data.rows);
+				}
+				if (!opts.remoteSort && opts.sortName){
+					var names = opts.sortName.split(',');
+					var orders = opts.sortOrder.split(',');
+					state.allRows.sort(function(r1,r2){
+						var r = 0;
+						for(var i=0; i<names.length; i++){
+							var sn = names[i];
+							var so = orders[i];
+							var col = $(target).datagrid('getColumnOption', sn);
+							var sortFunc = col.sorter || function(a,b){
+								return a==b ? 0 : (a>b?1:-1);
+							};
+							r = sortFunc(r1[sn], r2[sn]) * (so=='asc'?1:-1);
+							if (r != 0){
+								return r;
+							}
+						}
+						return r;
+					});
+				}
+				var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+				var end = start + parseInt(opts.pageSize);
+				data.rows = state.allRows.slice(start, end);
+				return data;
+			}
+
+			var loadDataMethod = $.fn.datagrid.methods.loadData;
+			var deleteRowMethod = $.fn.datagrid.methods.deleteRow;
+			$.extend($.fn.datagrid.methods, {
+				clientPaging: function(jq){
+					return jq.each(function(){
+						var dg = $(this);
+                        var state = dg.data('datagrid');
+                        var opts = state.options;
+                        opts.loadFilter = pagerFilter;
+                        var onBeforeLoad = opts.onBeforeLoad;
+                        opts.onBeforeLoad = function(param){
+                            state.allRows = null;
+                            return onBeforeLoad.call(this, param);
+                        }
+                        var pager = dg.datagrid('getPager');
+						pager.pagination({
+							onSelectPage:function(pageNum, pageSize){
+								opts.pageNumber = pageNum;
+								opts.pageSize = pageSize;
+								pager.pagination('refresh',{
+									pageNumber:pageNum,
+									pageSize:pageSize
+								});
+								dg.datagrid('loadData',state.allRows);
+							}
+						});
+                        $(this).datagrid('loadData', state.data);
+                        if (opts.url){
+                        	$(this).datagrid('reload');
+                        }
+					});
+				},
+                loadData: function(jq, data){
+                    jq.each(function(){
+                        $(this).data('datagrid').allRows = null;
+                    });
+                    return loadDataMethod.call($.fn.datagrid.methods, jq, data);
+                },
+                deleteRow: function(jq, index){
+                	return jq.each(function(){
+                		var row = $(this).datagrid('getRows')[index];
+                		deleteRowMethod.call($.fn.datagrid.methods, $(this), index);
+                		var state = $(this).data('datagrid');
+                		if (state.options.loadFilter == pagerFilter){
+                			for(var i=0; i<state.allRows.length; i++){
+                				if (state.allRows[i] == row){
+                					state.allRows.splice(i,1);
+                					break;
+                				}
+                			}
+                			$(this).datagrid('loadData', state.allRows);
+                		}
+                	});
+                },
+                getAllRows: function(jq){
+                	return jq.data('datagrid').allRows;
+                }
+			})
+		})(jQuery);
+
+		 function getData(){
+			var rows = [];
+			/* for(var i=1; i<=800; i++){
+				var amount = Math.floor(Math.random()*1000);
+				var price = Math.floor(Math.random()*1000);
+				rows.push({
+					inv: 'Inv No '+i,
+					date: $.fn.datebox.defaults.formatter(new Date()),
+					name: 'Name '+i,
+					amount: amount,
+					price: price,
+					cost: amount*price,
+					note: 'Note '+i
+				});
+			} */
+			return rows;
+		} 
+		
+		$(function(){
+			$('#dg').datagrid({data:getData()}).datagrid('clientPaging');
+		});
+	</script>	
+	
+						
+						
+						<%-- <div class='page fix'>
 							共 <b>${page.totalNumber}</b> 条
 							<c:if test="${page.currentPage != 1}">
 								<a href="javascript:changeCurrentPage('1')" class='first'>首页</a>
@@ -61,10 +212,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							跳至&nbsp;<input id="currentPageText" type='text' value='${page.currentPage}' class='allInput w28' />&nbsp;页&nbsp;
 							<a href="javascript:changeCurrentPage($('#currentPageText').val())" class='go'>GO</a>
 						</div>
-					</div>
-				</div>
-			</div>
+				 --%>
+			
+			
 	    </form>
-	    </div>
+	  <div id = "footer">
+     	<p>ViniBuild Copyright©2017</p>
+      </div>
+   
+  	 
+
 	</body>
 </html>

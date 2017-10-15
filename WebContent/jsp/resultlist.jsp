@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%= basePath %>js/list.js"></script>
 		<script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/js/My97DatePicker/WdatePicker.js"></script>
-<title>艾西湖</title>
+<title>艾溪湖</title>
 
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
@@ -25,6 +25,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body style="background-color:#b7d2ff;">
 	<h2>所有位移结果</h2>
+	
+	
 	<div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
 			<tbody>
@@ -36,6 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tbody>
 		</table>
 	</div>	
+	
 	<table id="dg" title="详细数据" style="width:100%;height:350px" data-options="
 				rownumbers:true,
 				singleSelect:true,
@@ -68,6 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 		</thead>
 	</table>
+	
 	<script>
 		(function($){
 			function pagerFilter(data){

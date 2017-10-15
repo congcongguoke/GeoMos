@@ -3,4 +3,21 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<div align="center" style="font-size: 10px;margin-top: 5px">ViNiBuild Copyright@2017</div>
+<head>
+  <style>
+   #footer{
+  	  		position:fixed; 
+			bottom:0;
+			width:100%;
+    		}
+   	 #footer p{
+   			text-align:center;
+    		}
+  </style>
+  
+</head>
+
+ <div id = "footer">
+     	<p>ViniBuild Copyright©2017</p>
+      </div>
+      
