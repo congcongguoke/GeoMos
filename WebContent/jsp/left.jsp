@@ -13,10 +13,53 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <title>艾西湖</title>
  
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common02.css"/>
+<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common02.css"/> --%>
+<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="../jquery-easyui-1.5.3/demo.css">
+	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	
 </head>
 <body>
-            <div class="page-sidebar">
+<ul class="easyui-tree">
+		<li>
+			<span>所有监测站的数据结果</span>
+			<ul>
+				<li data-options="state:'closed'">
+					<span>监测站点</span>
+					<ul>
+						<li>
+							<span><a href="<%=request.getContextPath()%>/servlet/Pointservlet" target="main">监测站点搜索</a></span>
+						</li>
+						<li>
+							<span>Wife</span>
+						</li>
+						<li>
+							<span>Company</span>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<span>Program Files</span>
+					<ul>
+						<li>Intel</li>
+						<li>Java</li>
+						<li>Microsoft Office</li>
+						<li>Games</li>
+					</ul>
+				</li>
+				<li>index.html</li>
+				<li>about.html</li>
+				<li>welcome.html</li>
+			</ul>
+		</li>
+	</ul>
+
+
+
+	
+        <%--  <!--  <div class="page-sidebar" >
                 <div class="sidebar-menugroup">
                     <div class="sidebar-grouptitle">所有监测站的数据结果</div>
                     <ul class="sidebar-menu">
@@ -42,6 +85,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <li class="sidebar-menuitem"><a href="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" target="main">温度气压搜索</a></li>        
                     </ul>
                 </div>
-                </div>
+                </div> --> --%>
 </body>
 </html>
