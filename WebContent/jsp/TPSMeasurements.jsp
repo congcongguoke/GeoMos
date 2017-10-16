@@ -34,10 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<tr>
 				<th data-options="field:'ck',checkbox:true"></th>
 				<th data-options="field:'productid',width:'20%',align:'center'">点名</th>
-				<th data-options="field:'listprice',width:'25%',align:'center'">更新时间</th>
+				<th data-options="field:'listprice',width:'19.8%',align:'center'">更新时间</th>
 				<th data-options="field:'listprice',width:'20%',align:'center'">温度</th>
-				<th data-options="field:'listprice',width:'20%',align:'center'">气压</th>
-				<th data-options="field:'listprice',width:'15%',align:'center'">湿度</th>
+				<th data-options="field:'listprice',width:'19%',align:'center'">气压</th>
+				<th data-options="field:'listprice',width:'19%',align:'center'">湿度</th>
 			</tr>
 		</thead>
 				<c:forEach items="${tppage}" var="ts" varStatus="status">
