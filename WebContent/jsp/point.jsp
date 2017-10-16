@@ -9,6 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <jsp:include page="02.jsp"></jsp:include>
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
@@ -16,12 +17,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
     <style type="text/css">
-    	#footer{
-    		position:fixed; 
-			bottom:0;
-			width:100%;}
-    	#footer p{
-    		text-align:center;}
    		h2{
     		text-align:center;}
     	body{
@@ -52,8 +47,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   </thead>				
 	  </table>
    </form>
-   <div id = "footer">
-   		<p>ViniBuild Copyright©2017</p>
-   </div>
 </body>
 </html>
