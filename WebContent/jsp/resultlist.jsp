@@ -10,11 +10,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" /> --%>
-		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
+	 	<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
 		<script src="<%= basePath %>js/list.js"></script>
 		<script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/js/My97DatePicker/WdatePicker.js"></script>
-<style>
+<style  type="text/css">
    #footer{
   	  		position:fixed; 
 			bottom:0;
@@ -32,7 +32,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo.css">
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
- 
 </head>
 
 <body style="background-color:#b7d2ff;text-align:center">
@@ -49,42 +48,156 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</tbody>
 		</table>
 	</div>	
-	
-	<table id="dg" title="详细数据" style="width:100%;height:350px" data-options="
-				rownumbers:true,
-				singleSelect:true,
-				autoRowHeight:false,
-				pagination:true,
-				pageSize:10">
+	<input type="hidden" name="currentPage" id="currentPage" value="${page.currentPage}"/>
+	<table id="dg" title="详细数据"  class="easyui-datagrid" style="width:100%;height:auto"
+			data-options="
+			rownumbers:true,
+			singleSelect:true,
+			pagination:true,
+			autoRowHeight:false,
+			pagination:true,
+			pageSize:10
+			">
 		<thead>
 			<tr>
-				<th field="checkbox" width="40"><input type="checkbox" id="all" onclick="#"/></th>
-				<th field="inv" width="100">点名</th>
-				<th field="date" width="120">东坐标</th>
-				<th field="name" width="120">北坐标</th>
-				<th field="amount" width="120">东方向位移</th>
-				<th field="price" width="120">北方向位移</th>
-				<th field="cost" width="120">高程位移</th>
-				<th field="note" width="150">观测时间</th>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'inv',width:'7%'">点名</th>
+				<th data-options="field:'date',width:'15%'">东坐标</th>
+				<th data-options="field:'name',width:'15%'">北坐标</th>
+				<th data-options="field:'amount',width:'12%'">高程</th>
+				<th data-options="field:'amount',width:'12%'">东方向位移</th>
+				<th data-options="field:'price',width:'12%'">北方向位移</th>
+				<th data-options="field:'cost',width:'12%'">高程位移</th>
+				<th data-options="field:'note',width:'15%'">观测时间</th>
 			</tr>
+			</thead>
+		<tbody>
 			<c:forEach items="${rspage}" var="result" varStatus="status">
-									<tr >
-										<td><input type="checkbox"  name="id" value="${result.id}"/></td>
-										<td>${result.name}</td>
-										<td>${result.easting}</td>
-										<td>${result.northing}</td>
-										<td>${result.height}</td>
-										<td>${result.eastingDiff}</td>
-										<td>${result.northingDiff}</td>
-										<td>${result.heightDiff}</td>
-										<td>${result.epoch}</td>
-									</tr>
-								</c:forEach>
-		</thead>
+			<tr >
+				<td><input type="checkbox"  name="id" value="${result.id}"/></td>
+					<td>${result.name}</td>
+					<td>${result.easting}</td>
+					<td>${result.northing}</td>
+					<td>${result.height}</td>
+					<td>${result.eastingDiff}</td>
+					<td>${result.northingDiff}</td>
+					<td>${result.heightDiff}</td>
+					<td>${result.epoch}</td>
+			</tr>
+			</c:forEach>
+		</tbody>
 	</table>
 	</form>
 	<div id = "footer">ViniBuild Copyright©2017</div>
-	<script>
+<script type="text/javascript">
+		/* $(function(){
+			var pager = $('#dg').datagrid('getPager');	// get the pager of datagrid
+			
+		}) */
+		(function($){
+			function pagerFilter(data){
+				if ($.isArray(data)){	// is array
+					data = {
+						total: data.length,
+						rows: data
+					}
+				}
+				var target = this;
+				var dg = $(target);
+				var state = dg.data('datagrid');
+				var opts = dg.datagrid('options');
+				if (!state.allRows){
+					state.allRows = (data.rows);
+				}
+				if (!opts.remoteSort && opts.sortName){
+					var names = opts.sortName.split(',');
+					var orders = opts.sortOrder.split(',');
+					state.allRows.sort(function(r1,r2){
+						var r = 0;
+						for(var i=0; i<names.length; i++){
+							var sn = names[i];
+							var so = orders[i];
+							var col = $(target).datagrid('getColumnOption', sn);
+							var sortFunc = col.sorter || function(a,b){
+								return a==b ? 0 : (a>b?1:-1);
+							};
+							r = sortFunc(r1[sn], r2[sn]) * (so=='asc'?1:-1);
+							if (r != 0){
+								return r;
+							}
+						}
+						return r;
+					});
+				}
+				var start = (opts.pageNumber-1)*parseInt(opts.pageSize);
+				var end = start + parseInt(opts.pageSize);
+				data.rows = state.allRows.slice(start, end);
+				return data;
+			}
+
+			var loadDataMethod = $.fn.datagrid.methods.loadData;
+			var deleteRowMethod = $.fn.datagrid.methods.deleteRow;
+			$.extend($.fn.datagrid.methods, {
+				clientPaging: function(jq){
+					return jq.each(function(){
+						var dg = $(this);
+                        var state = dg.data('datagrid');
+                        var opts = state.options;
+                        opts.loadFilter = pagerFilter;
+                        var onBeforeLoad = opts.onBeforeLoad;
+                        opts.onBeforeLoad = function(param){
+                            state.allRows = null;
+                            return onBeforeLoad.call(this, param);
+                        }
+                        var pager = dg.datagrid('getPager');
+						pager.pagination({
+							onSelectPage:function(pageNum, pageSize){
+								opts.pageNumber = pageNum;
+								opts.pageSize = pageSize;
+								pager.pagination('refresh',{
+									pageNumber:pageNum,
+									pageSize:pageSize
+								});
+								dg.datagrid('loadData',state.allRows);
+							}
+						});
+                        $(this).datagrid('loadData', state.data);
+                        if (opts.url){
+                        	$(this).datagrid('reload');
+                        }
+					});
+				},
+                loadData: function(jq, data){
+                    jq.each(function(){
+                        $(this).data('datagrid').allRows = null;
+                    });
+                    return loadDataMethod.call($.fn.datagrid.methods, jq, data);
+                },
+                deleteRow: function(jq, index){
+                	return jq.each(function(){
+                		var row = $(this).datagrid('getRows')[index];
+                		deleteRowMethod.call($.fn.datagrid.methods, $(this), index);
+                		var state = $(this).data('datagrid');
+                		if (state.options.loadFilter == pagerFilter){
+                			for(var i=0; i<state.allRows.length; i++){
+                				if (state.allRows[i] == row){
+                					state.allRows.splice(i,1);
+                					break;
+                				}
+                			}
+                			$(this).datagrid('loadData', state.allRows);
+                		}
+                	});
+                },
+                getAllRows: function(jq){
+                	return jq.data('datagrid').allRows;
+                }
+			})
+		})(jQuery);
+
+</script>
+	
+	<%-- <script>
 		(function($){
 			function pagerFilter(data){
 				if ($.isArray(data)){	// is array
@@ -195,7 +308,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			$('#dg').datagrid({data:getData()}).datagrid('clientPaging');
 		});
 	</script>
-<%-- <div class="page-content">
+<div class="page-content">
 <div class="content-nav">所有位移结果</div>
 		<form action="<%=request.getContextPath()%>/servlet/Resultsservlet" id="mainForm" method="post">
 			<input type="hidden" name="currentPage" id="currentPage" value="${page.currentPage}"/>
@@ -261,6 +374,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 	    </form>
-	    </div>--%>
+	    </div> --%>
 	</body> 
 </html>
