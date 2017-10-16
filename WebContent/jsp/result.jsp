@@ -27,7 +27,7 @@
 <meta http-equiv="refresh" content="2;url=<%=request.getContextPath()%>/servlet/resultsindex?pointid=${result.pointid}&action=sel">
 <title>艾西湖</title>
 </head>
-<%-- <body>
+<body>
 	<div class="page-content">
 		<div class="content-nav">最新结果</div>
 		<form action=" #" id="mainForm" method="post">
@@ -82,7 +82,7 @@
 			</div>
 		</form>
 	</div>
-</body> --%>
+</body>
 <body >
 	<h2>最新结果</h2>
 	<div style="margin:20px 0;"></div>
