@@ -9,53 +9,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" /> --%>
-
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
+		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
 		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
 		<script src="<%= basePath %>js/list.js"></script>
+		<jsp:include page="02.jsp"></jsp:include>
 <title>艾西湖</title>
-
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo.css">
-<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
-
+<style>
+	body{
+	background-color:#b7d2ff;
+	text-align:center;
+	}
+</style>
 </head>
-<body style="background-color:#b7d2ff;text-align:center;">
-<h2>温度气压表</h2>
-<form action="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet" id="mainForm" method="post">
-<div class="easyui-panel" style="width:100%;">
-		<table class="tab1">
-			<tbody>
-				<tr>
-					<td>	<div id="tb" style="padding:2px 5px;">点名:
-		<select class="easyui-combobox" panelHeight="auto" style="width:120px">
-			<option value="">请选择监测站点</option>
-			<c:forEach var="dept" items="${ps}">
-				<option value="${dept.id}">${dept.name}</option>
-			</c:forEach>
-		</select>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-search">查询</a>
-	</div></td>
-				</tr>
-			</tbody>
-		</table>
-	</div>	
-	<table id="dg" title="详细数据" style="width:100%;height:350px" data-options="
-				rownumbers:true,
-				singleSelect:true,
-				autoRowHeight:false,
-				pagination:true,
-				pageSize:10">
+<body>
+	<h2>温度气压表</h2>
+	<form action="<%=request.getContextPath()%>/servlet/Pointservlet" method="post">
+		 <table title="详细数据" class="easyui-datagrid" style="width:100%;height:auto">
 		<thead>
 			<tr>
-				<th field="checkbox" width="40"><input type="checkbox" id="all" onclick="#"/></th>
-				<th field="inv" width="100">点名</th>
-				<th field="date" width="150">更新时间</th>
-				<th field="name" width="120">温度</th>
-				<th field="amount" width="120">气压</th>
-				<th field="price" width="120">湿度</th>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'productid',width:'20%',align:'center'">点名</th>
+				<th data-options="field:'listprice',width:'25%',align:'center'">更新时间</th>
+				<th data-options="field:'listprice',width:'20%',align:'center'">温度</th>
+				<th data-options="field:'listprice',width:'20%',align:'center'">气压</th>
+				<th data-options="field:'listprice',width:'15%',align:'center'">湿度</th>
+			</tr>
+		</thead>
 				<c:forEach items="${tppage}" var="ts" varStatus="status">
 					<tr>
 						<td><input type="checkbox"  name="id" value="${ts.pointid}"/></td>
@@ -66,12 +50,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<td>${ts.humidity}</td>
 					</tr>
 				</c:forEach>
-			</tr>
-		</thead>
+			</tbody>
 	</table>
 </form>
-<div style="bottom:0px;align:center;">ViniBuild Copyright©2017</div>
-<script>
+
+<!-- <script>
 		(function($){
 			function pagerFilter(data){
 				if ($.isArray(data)){	// is array
@@ -182,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		$(function(){
 			$('#dg').datagrid({data:getData()}).datagrid('clientPaging');
 		});
-	</script>
+	</script> -->
 
 <%-- <div class="page-content">
 <div class="content-nav">温度气压表</div>
