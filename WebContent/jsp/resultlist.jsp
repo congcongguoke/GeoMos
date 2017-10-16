@@ -14,6 +14,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script src="<%= basePath %>js/list.js"></script>
 		<script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/js/My97DatePicker/WdatePicker.js"></script>
+<style>
+   #footer{
+  	  		position:fixed; 
+			bottom:0;
+			width:100%;
+    		}
+   	 #footer p{
+   			text-align:center;
+    		}
+  </style>
+  
 <title>艾溪湖</title>
 
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
@@ -23,18 +34,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
  
 </head>
-<<<<<<< HEAD
+
 <body style="background-color:#b7d2ff;text-align:center">
-=======
-<body style="background-color:#b7d2ff;text-align:center;">
->>>>>>> 9b102e6be477a668a2cddbe342ab7dafc4be7ac3
 	<h2>所有位移结果</h2>
-<<<<<<< HEAD
-	
-	
-=======
 	<form action="<%=request.getContextPath()%>/servlet/Resultsservlet" id="mainForm" method="post">
->>>>>>> 10ffe5d0e14f3a1c1256d4b323075de200be42d5
 	<div class="easyui-panel" style="width:100%;">
 		<table class="tab1">
 			<tbody>
@@ -79,12 +82,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</c:forEach>
 		</thead>
 	</table>
-<<<<<<< HEAD
-	
-=======
 	</form>
-	<div style="bottom:0px;text-align:center;">ViniBuild Copyright©2017</div>
->>>>>>> 10ffe5d0e14f3a1c1256d4b323075de200be42d5
+	<div id = "footer">ViniBuild Copyright©2017</div>
 	<script>
 		(function($){
 			function pagerFilter(data){

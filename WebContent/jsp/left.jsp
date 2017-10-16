@@ -23,8 +23,11 @@
 	 <div style="margin: 20px 0;"></div>
 	 <div style="padding:5px">
 	   <ul class="easyui-tree">
-	   <li class="tree-title">
-	       <div class="sidebar-grouptitle">所有监测站的数据结果</div>
+	   
+	   	<li class="tree-title"><span >系统概述</span></li>
+	   	
+	   	
+	   <li class="tree-title"><span>所有监测站的数据结果</span>
 			<ul class="sidebar-menu">
 			<c:forEach items="${ps}" var="ps" varStatus="status">
 				<li class="sidebar-menuitem active">
@@ -52,12 +55,13 @@
 		</li>
 			
 			
-		<li class="sidebar-menuitem"><span>温度气压管理</span>
+		<li class="tree-title"><span>温度气压管理</span>
 			<ul class="sidebar-menu">
 				<li class="sidebar-menuitem"><a
 					href="<%=request.getContextPath()%>/servlet/TPSMeasurementsservlet"
 					target="main">温度气压搜索</a></li>
-			</ul></li>
+			</ul>
+		</li>
 	</ul>
 	</div>
 
