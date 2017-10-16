@@ -11,13 +11,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/common03.css" />
-<script src="<%=basePath%>js/jquery-1.7.2.min.js"></script>
+<jsp:include page="02.jsp"></jsp:include>
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
+    <style type="text/css">
+   		h2{
+    		text-align:center;}
+    	body{
+    		background-color:#b7d2ff;}
+     </style>
 <meta http-equiv="refresh" content="2;url=<%=request.getContextPath()%>/servlet/resultsindex?pointid=${result.pointid}&action=sel">
 <title>艾西湖</title>
 </head>
-<body>
+<%-- <body>
 	<div class="page-content">
 		<div class="content-nav">最新结果</div>
 		<form action=" #" id="mainForm" method="post">
@@ -72,5 +82,44 @@
 			</div>
 		</form>
 	</div>
+</body> --%>
+<body >
+	<h2>最新结果</h2>
+	<div style="margin:20px 0;"></div>
+	<form action=" #" id="mainForm" method="post">
+		 <table title="详细数据" class="easyui-datagrid" style="width:100%;height:auto">
+		<!-- <thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'productid',width:'50%',align:'center'">点名</th>
+				<th data-options="field:'listprice',width:'49.5%',align:'center'">创建时间</th>
+			</tr>
+		</thead> -->
+			<tbody>
+				<tr>
+					<td><input type="checkbox" id="all" onclick="#" /></td>
+					<td>点名</td>
+					<th>东坐标</th>
+					<th>北坐标</th>
+					<th>高程</th>
+					<th>东方向位移</th>
+					<th>北方向位移</th>
+					<th>高程位移</th>
+					<th>观测时间</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="id" value="${result.id}" /></td>
+					<td>${result.name}</td>
+					<td>${result.easting}</td>
+					<td>${result.northing}</td>
+					<td>${result.height}</td>
+					<td>${result.eastingDiff}</td>
+					<td>${result.northingDiff}</td>
+					<td>${result.heightDiff}</td>
+					<td>${result.epoch}</td>
+				</tr>
+			</tbody>
+		</table>
+   </form>
 </body>
 </html>

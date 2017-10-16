@@ -27,25 +27,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body >
 	<h2>所有监测点</h2>
 	<div style="margin:20px 0;"></div>
-	<form action="<%=request.getContextPath()%>/servlet/Pointservlet" id="mainForm" method="post">
-		<table id="dg" class="easyui-datagrid" title="监测点详细信息"
-			data-options="rownumbers:true,singleSelect:true,method:'post'">
-			<thead>
-				<tr>
-					<th data-options="field:'ck',checkbox:true"></th>
-					<th data-options="field:'productid',width:100">点名</th>
-					<th data-options="field:'listprice',width:80,align:'right'">时间</th>
-				</tr>
-						
+	<form action="<%=request.getContextPath()%>/servlet/Pointservlet" method="post">
+		 <table title="详细数据" class="easyui-datagrid" style="width:100%;height:auto">
+		<thead>
+			<tr>
+				<th data-options="field:'ck',checkbox:true"></th>
+				<th data-options="field:'productid',width:'50%',align:'center'">点名</th>
+				<th data-options="field:'listprice',width:'49.5%',align:'center'">创建时间</th>
+			</tr>
+		</thead>
+			<tbody>
 				<c:forEach items="${pspage}" var="point" varStatus="status">
-				<tr>
-					<td><input type="checkbox"  name="id" value="${point.id}"/></td>
-					<td>${point.name}</td>
-					<td>${point.epoch}</td>
-				</tr>
-	   	   		</c:forEach>
-		   </thead>				
-	  </table>
+					<tr>
+						<td><input type="checkbox" name="id" value="${point.id}" /></td>
+						<td>${point.name}</td>
+						<td>${point.epoch}</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
    </form>
 </body>
 </html>
