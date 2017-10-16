@@ -88,13 +88,14 @@
 	<div style="margin:20px 0;"></div>
 	<form action=" #" id="mainForm" method="post">
 		 <table title="详细数据" class="easyui-datagrid" style="width:100%;height:auto">
-		<!-- <thead>
+		 <thead>
 			<tr>
-				<th data-options="field:'ck',checkbox:true"></th>
-				<th data-options="field:'productid',width:'50%',align:'center'">点名</th>
+				<th data-options="field:'ck'">最新的温、气、压：</th>
+				<th data-options="field:'productid',width:'25%',align:'center'">温度：</th>
+				<th data-options="width:'25%'">${tps.temperature}</th>
 				<th data-options="field:'listprice',width:'49.5%',align:'center'">创建时间</th>
 			</tr>
-		</thead> -->
+		</thead>
 			<tbody>
 				<tr>
 					<td><input type="checkbox" id="all" onclick="#" /></td>
