@@ -44,28 +44,30 @@ public class TPSMeasurementsservlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
-		int id=0;
-    String pointid=request.getParameter("pointid");
-    if(StringUtils.hasLength(pointid)) {
-    	id=Integer.valueOf(pointid);
-		
-	}
+
+		int id = 0;
+		String pointid = request.getParameter("pointid");
+		if (StringUtils.hasLength(pointid)) {
+			id = Integer.valueOf(pointid);
+
+		}
 		String currentPage = request.getParameter("currentPage");
-		Page page=new Page();
+		Page page = new Page();
 		Pattern pattern = Pattern.compile("[0-9]{1,9}");
-		if(currentPage == null ||  !pattern.matcher(currentPage).matches()) {
+		if (currentPage == null || !pattern.matcher(currentPage).matches()) {
 			page.setCurrentPage(1);
 		} else {
 			page.setCurrentPage(Integer.valueOf(currentPage));
 		}
-		List<TPSMeasurements> tppage=tp.listTPSMeasurements(id,page);
+		List<TPSMeasurements> tppage = tp.listTPSMeasurements(id, page);
 		// 查询消息列表并传给页面
-		request.setAttribute("tppage",tppage );
-				// 向页面传值
+		request.setAttribute("tppage", tppage);
+		// 向页面传值
 		request.setAttribute("page", page);
+		//response.sendRedirect("/jsp/TPSMeasurements.jsp");
 		request.getRequestDispatcher("/jsp/TPSMeasurements.jsp").forward(request, response);
 	}
 

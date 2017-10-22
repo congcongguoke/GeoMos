@@ -9,9 +9,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
 	<%-- <link rel="stylesheet" href="<%=request.getContextPath()%>/css/common03.css" /> --%>
 	 	<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
 		<script src="<%= basePath %>js/list.js"></script>
+		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 		<script language="javascript" type="text/javascript"
 	src="<%=request.getContextPath()%>/js/My97DatePicker/WdatePicker.js"></script>
 <style  type="text/css">
@@ -30,8 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo.css">
-	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
+	
 </head>
 
 <body style="background-color:#b7d2ff;text-align:center">

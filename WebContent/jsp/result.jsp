@@ -14,18 +14,24 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/default/easyui.css">
         <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/demo/demo.css">
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jquery-easyui-1.5.3/themes/icon.css">
+		
+		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
+		<script src="<%= basePath %>js/list.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/jquery.easyui.min.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jquery-easyui-1.5.3/locale/easyui-lang-zh_CN.js"></script>
-		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
-		<script src="<%= basePath %>js/list.js"></script>
-		<jsp:include page="02.jsp"></jsp:include>
+		
 		<script src="<%= basePath %>js/echarts.min.js"></script>
 <title>艾西湖</title>
 <style>
 	body{
 	background-color:#b7d2ff;
 	text-align:center;
+	}
+	#main{
+		text-align:center;
+		margin:30px auto;
+		padding:0 auto;
 	}
 </style>
 </head>
@@ -80,7 +86,8 @@
 			</tbody>
 	    </table>
 	 </form>
-	 <div id="main" style="width: 600px;height:400px;"></div>
+	 <div id="main" style="width: 1000px;height:400px;"></div>
+	 <jsp:include page="02.jsp"></jsp:include>
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main'));
