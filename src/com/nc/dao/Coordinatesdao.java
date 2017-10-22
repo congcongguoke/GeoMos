@@ -21,7 +21,7 @@ public class Coordinatesdao {
 		List<Object> paramList ;
 		paramList = new ArrayList<Object>();
 		StringBuffer sql = new StringBuffer(
-	" select C.Point_ID ,C.Epoch ,C.Easting,C.Northing,C.Height ,P.Name from [AXH].[dbo].[Coordinates] C,[AXH].[dbo].[Points] P where C.Point_ID=P.ID  ");
+	" select top 100 percent  C.Point_ID ,C.Epoch ,C.Easting,C.Northing,C.Height ,P.Name from [AXH].[dbo].[Coordinates] C,[AXH].[dbo].[Points] P where C.Point_ID=P.ID GROUP BY C.Point_ID ,C.Epoch ,C.Easting,C.Northing,C.Height ,P.Name ORDER BY C.Epoch DESC");
 
 
 		//sql.append(" order by Point_ID asc ");

@@ -20,7 +20,7 @@ public class Pointdao {
 		List<Object> paramList = null;
 		paramList = new ArrayList<Object>();
 	
-		StringBuilder sql = new StringBuilder(" select ID,Name,Epoch from [AXH].[dbo].[Points] ");
+		StringBuilder sql = new StringBuilder(" select top 100 percent ID,Name,Epoch from [AXH].[dbo].[Points] GROUP BY ID,Name,Epoch order by epoch desc ");
 
 		
 		//sql.append(" order by ID asc ");

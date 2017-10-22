@@ -21,7 +21,7 @@ public class Resultsdao {
 		paramList = new ArrayList<Object>();
 
 		StringBuffer sql = new StringBuffer(
-" select R.ID,R.Point_ID,R.Epoch,R.Easting,R.Northing,R.Height,R.EastingDiff,R.NorthingDiff,R.HeightDiff ,P.Name from [AXH].[dbo].[Results]  R, [AXH].[dbo].[Points]  P where R.Point_ID=P.ID ");
+" select top 100 percent R.ID,R.Point_ID,R.Epoch,R.Easting,R.Northing,R.Height,R.EastingDiff,R.NorthingDiff,R.HeightDiff ,P.Name from [AXH].[dbo].[Results]  R, [AXH].[dbo].[Points]  P where R.Point_ID=P.ID GROUP BY R.ID,R.Point_ID,R.Epoch,R.Easting,R.Northing,R.Height,R.EastingDiff,R.NorthingDiff,R.HeightDiff ,P.Name order by R.Epoch desc ");
 
 		
 		if (epoch != null && !epoch.equals("")) {

@@ -20,7 +20,7 @@ public class TPSMeasurementsdao {
 		paramList = new ArrayList<Object>();
 
 		StringBuffer sql = new StringBuffer(
-" select T.ID,T.Point_ID,T.Epoch,T.Temperature,T.Pressure,T.Humidity ,P.Name from [AXH].[dbo].[TPSMeasurements] T, [AXH].[dbo].[Points] P where T.Point_ID=P.ID ");
+" select top 100 percent T.ID,T.Point_ID,T.Epoch,T.Temperature,T.Pressure,T.Humidity ,P.Name from [AXH].[dbo].[TPSMeasurements] T, [AXH].[dbo].[Points] P where T.Point_ID=P.ID GROUP BY T.ID,T.Point_ID,T.Epoch,T.Temperature,T.Pressure,T.Humidity ,P.Name order by T.Epoch");
 
 		if (pointid>0) {
 			sql.append(" and Point_ID = ? ");
