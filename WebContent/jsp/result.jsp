@@ -20,6 +20,7 @@
 		<script src="<%= basePath %>js/jquery-1.7.2.min.js"></script>
 		<script src="<%= basePath %>js/list.js"></script>
 		<jsp:include page="02.jsp"></jsp:include>
+		<script src="<%= basePath %>js/echarts.min.js"></script>
 <title>艾西湖</title>
 <style>
 	body{
@@ -79,6 +80,130 @@
 			</tbody>
 	    </table>
 	 </form>
+	 <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+        	    title: {
+        	        text: '一周位移变化',
+        	    },
+        	    tooltip: {
+        	        trigger: 'axis'
+        	    },
+        	    legend: {
+        	        data:['东位移','北位移','高程位移']
+        	    },
+        	    toolbox: {
+        	        show: true,
+        	        feature: {
+        	            dataZoom: {
+        	                yAxisIndex: 'none'
+        	            },
+        	            dataView: {readOnly: false},
+        	            magicType: {type: ['line', 'bar']},
+        	            restore: {},
+        	            saveAsImage: {}
+        	        }
+        	    },
+        	    xAxis:  {
+        	        type: 'category',
+        	        boundaryGap: false,
+        	        data: ['周一','周二','周三','周四','周五','周六','周日']
+        	    },
+        	    yAxis: {
+        	        type: 'value',
+        	        axisLabel: {
+        	            formatter: '{value}'
+        	        }
+        	    },
+        	    series: [
+        	        {
+        	            name:'东位移',
+        	            type:'line',
+        	            data:[11, 11, 15, 13, 12, 13, 10],
+        	            markPoint: {
+        	                data: [
+        	                    {type: 'max', name: '最大值'},
+        	                    {type: 'min', name: '最小值'}
+        	                ]
+        	            },
+        	            markLine: {
+        	                data: [
+        	                    {type: 'average', name: '平均值'}
+        	                ]
+        	            }
+        	        },
+        	        {
+        	            name:'北位移',
+        	            type:'line',
+        	            data:[11, 10, 15, 13, 12, 13, 10],
+        	            markPoint: {
+        	                data: [
+        	                    {type: 'max', name: '最大值'},
+        	                    {type: 'min', name: '最小值'}
+        	                ]
+        	            },
+        	            markLine: {
+        	                data: [
+        	                    {type: 'average', name: '平均值'}
+        	                ]
+        	            }
+        	        },
+        	        {
+        	            name:'高程位移',
+        	            type:'line',
+        	            data:[11, 10, 11, 8, 12, 10, 10],
+        	            markPoint: {
+        	                data: [
+        	                    {type: 'max', name: '最大值'},
+        	                    {type: 'min', name: '最小值'}
+        	                ]
+        	            },
+        	            markLine: {
+        	                data: [
+        	                    {type: 'average', name: '平均值'}
+        	                ]
+        	            }
+        	        }
+        	       /*  {
+        	            name:'最低气温',
+        	            type:'line',
+        	            data:[1, -2, 2, 5, 3, 2, 0],
+        	            markPoint: {
+        	                data: [
+        	                    {name: '周最低', value: -2, xAxis: 1, yAxis: -1.5}
+        	                ]
+        	            },
+        	            markLine: {
+        	                data: [
+        	                    {type: 'average', name: '平均值'},
+        	                    [{
+        	                        symbol: 'none',
+        	                        x: '90%',
+        	                        yAxis: 'max'
+        	                    }, {
+        	                        symbol: 'circle',
+        	                        label: {
+        	                            normal: {
+        	                                position: 'start',
+        	                                formatter: '最大值'
+        	                            }
+        	                        },
+        	                        type: 'max',
+        	                        name: '最高点'
+        	                    }]
+        	                ]
+        	            }
+        	        } */
+        	    ]
+        	};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 	
 </body>
 </html>
